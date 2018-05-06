@@ -1,12 +1,12 @@
 // Dependencies require
 var express = require('express');
 var jwt = require('jsonwebtoken');
-var bcrypt = require('bcryptjs');
+var bcrypt = require('bcrypt');
 var mongoose = require('mongoose');
-var User = require('../models/users').User;
+var User = require('../models/users');
 
 /* ************************* MONGOOSE ************************* */
-connection
+// connection
 var collection = 'users';
 var uri = 'mongodb://localhost/tasklist';
 mongoose.connect(uri, { useMongoClient:true });
@@ -29,11 +29,10 @@ router.post('/login', login);
 
 module.exports = router;
 
-
 // user register
 function register(request, response, next) {
 
-	var user = request.body;
+	let user = request.body;
 
 	if (user.username != '' && user.password != '') {
 
@@ -73,7 +72,7 @@ function register(request, response, next) {
 // user authorize
 function login(request, response, next) {
 
-	var user = request.body;
+	let user = request.body;
 
 	if (user.username != '' && user.password != '') {
 

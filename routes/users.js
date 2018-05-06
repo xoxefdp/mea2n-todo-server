@@ -1,8 +1,9 @@
 // Dependencies require
 var express = require('express');
-var bcrypt = require('bcryptjs');
+var bcrypt = require('bcrypt');
 var mongoose = require('mongoose');
-var User = require('../models/users').User;
+var User = require('../models/users');
+
 
 /* ************************* MONGOOSE ************************* */
 // connection

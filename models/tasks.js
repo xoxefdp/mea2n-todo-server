@@ -1,17 +1,11 @@
 // Dependencies require
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
 // schema define
-var Schema = mongoose.Schema;
-
-var taskSchema = new Schema({
-	title: String,
-	isDone: Boolean
-});
+let TaskSchema = mongoose.Schema({
+	title: {type:String},
+	isDone: {type:Boolean}
+}, { timestamps: true });
 
 // model init
-var Task = mongoose.model('tasks', taskSchema);
-
-module.exports = {
-	Task: Task
-}
+let Task = module.exports = mongoose.model('tasks', TaskSchema);

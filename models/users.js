@@ -1,17 +1,11 @@
 // Dependencies require
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
 // schema define
-var Schema = mongoose.Schema;
-
-var userSchema = new Schema({
-	username: String,
-	password: String
-});
+let UserSchema = mongoose.Schema({
+	username: {type:String},
+	password: {type:String}
+}, { timestamps: true });
 
 // model init
-var User = mongoose.model('users', userSchema);
-
-module.exports = {
-	User: User
-}
+let User = module.exports = mongoose.model('users', UserSchema);
