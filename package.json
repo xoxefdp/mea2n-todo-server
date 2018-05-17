@@ -1,6 +1,6 @@
 {
   "name": "server-todo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Server app for TODO list made with the MEAN stack",
   "keywords": [
     "mongoose",
