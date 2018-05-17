@@ -1,4 +1,4 @@
-const CONFIG = require('./config/config')
+const CONFIG = require('../config/config')
 
 const mongoose = require('mongoose')
 const Task = require('./tasks')
@@ -13,7 +13,7 @@ if (CONFIG.db_host !== '') {
   /**
    * MONGODB Connection point
    */
-  const connectionUri = 'mongodb://' + CONFIG.db_host + ':' + CONFIG.db_port + '/' + CONFIG.db_name
+  let connectionUri = 'mongodb://' + CONFIG.db_host + ':' + CONFIG.db_port + '/' + CONFIG.db_name
 
   /**
    * ENABLE Mongoose to return Promises

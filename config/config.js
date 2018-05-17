@@ -1,14 +1,19 @@
-require('dotenv').config() // instatiate environment variables
+/**
+ * Reads data from .env
+ */
+require('dotenv').config()
 
-const CONFIG = {} // Make this global to use all over the application
+const CONFIG = {}
 
-CONFIG.app = process.env.APP || 'development'
-CONFIG.port = process.env.PORT || '3000'
-CONFIG.db_dialect = process.env.DB_DIALECT || 'mongo'
-CONFIG.db_host = process.env.DB_HOST || 'localhost'
-CONFIG.db_port = process.env.DB_PORT || '27017'
-CONFIG.db_name = process.env.DB_NAME || 'dbName'
-CONFIG.db_user = process.env.DB_USER || 'dbUser'
-CONFIG.db_password = process.env.DB_PASSWORD || 'dbPassword'
-CONFIG.jwt_encryption = process.env.JWT_ENCRYPTION || 'jwt_please_change'
-CONFIG.jwt_expiration = process.env.JWT_EXPIRATION || '10000'
+CONFIG.app = process.env.APP || 'APP'
+CONFIG.port = process.env.PORT || 'PORT'
+CONFIG.db_dialect = process.env.DB_DIALECT || 'DB_DIALECT'
+CONFIG.db_host = process.env.DB_HOST || 'DB_HOST'
+CONFIG.db_port = process.env.DB_PORT || 'DB_PORT'
+CONFIG.db_name = process.env.DB_NAME || 'DB_NAME'
+CONFIG.db_user = process.env.DB_USER || 'DB_USER'
+CONFIG.db_password = process.env.DB_PASSWORD || 'DB_PASSWORD'
+CONFIG.jwt_encryption = process.env.JWT_ENCRYPTION || 'JWT_ENCRYPTION'
+CONFIG.jwt_expiration = process.env.JWT_EXPIRATION || 'JWT_EXPIRATION'
+
+module.exports = CONFIG

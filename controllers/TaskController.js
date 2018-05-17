@@ -1,8 +1,13 @@
 const Task = require('../models/tasks')
 
-// Get All Tasks
-const getAll = function (request, response, next) {
-  Task.find({}, function (error, success) {
+/**
+ * Get All Tasks
+ * @param {*} request
+ * @param {*} response
+ * @param {*} next
+ */
+const getAll = (request, response) => {
+  Task.find({}, (error, success) => {
     if (error) {
       response.send(error)
       console.log(error)
@@ -13,9 +18,14 @@ const getAll = function (request, response, next) {
 }
 module.exports.getAll = getAll
 
-// Get Single Task
-const getSingle = function (request, response, next) {
-  Task.findById(request.params.id, function (error, success) {
+/**
+ * Get Single Task
+ * @param {*} request
+ * @param {*} response
+ * @param {*} next
+ */
+const getSingle = (request, response) => {
+  Task.findById(request.params.id, (error, success) => {
     if (error) {
       response.send(error)
       console.log(error)
@@ -26,15 +36,20 @@ const getSingle = function (request, response, next) {
 }
 module.exports.getSingle = getSingle
 
-// Save Task
-const create = function (request, response, next) {
+/**
+ * Save Task
+ * @param {*} request
+ * @param {*} response
+ * @param {*} next
+ */
+const create = (request, response) => {
   let data = request.body
 
   if (!data.title || !(data.isDone + '')) {
     response.status(400).json({ 'error': 'Bad Data' })
   } else {
     let task = new Task(data)
-    task.save(function (error, success) {
+    task.save((error, success) => {
       if (error) {
         response.send(error)
         console.log(error)
@@ -46,9 +61,14 @@ const create = function (request, response, next) {
 }
 module.exports.create = create
 
-// Delete Task
-const remove = function (request, response, next) {
-  Task.findByIdAndRemove(request.params.id, function (error, success) {
+/**
+ * Delete Task
+ * @param {*} request
+ * @param {*} response
+ * @param {*} next
+ */
+const remove = (request, response) => {
+  Task.findByIdAndRemove(request.params.id, (error, success) => {
     if (error) {
       response.send(error)
       console.log(error)
@@ -59,14 +79,19 @@ const remove = function (request, response, next) {
 }
 module.exports.remove = remove
 
-// Update Task
-const update = function (request, response, next) {
+/**
+ * Update Task
+ * @param {*} request
+ * @param {*} response
+ * @param {*} next
+ */
+const update = (request, response) => {
   let data = request.body
 
   if (!data) {
     response.status(400).json({ 'error': 'Bad Data' })
   } else {
-    Task.findByIdAndUpdate(request.params.id, data, function (error, success) {
+    Task.findByIdAndUpdate(request.params.id, data, (error, success) => {
       if (error) {
         response.send(error)
         console.log(error)

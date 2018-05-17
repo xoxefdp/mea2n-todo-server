@@ -30,12 +30,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 /**
  * DATABASE
  */
-// const models = require('./models/models')
+const models = require('./models/models')
 
 /**
  * CORS: This is CORS-enabled for all origins!
  */
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', '*')
   // Request methods you wish to allow
@@ -70,7 +70,7 @@ app.use(function (req, res, next) {
  */
 app.use('/', v1)
 
-app.use('/', function (req, res, next) {
+app.use('/', (req, res, next) => {
   res.statusCode = 200
   res.json({ status: 'success', message: 'Parcel Pending API', data: {} })
 })
@@ -78,7 +78,7 @@ app.use('/', function (req, res, next) {
 /**
  * CATCH 404 and forward to error handler
  */
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   var err = new Error('Not Found')
   err.status = 404
   next(err)
@@ -87,7 +87,7 @@ app.use(function (req, res, next) {
 /**
  * ERROR Handler
  */
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
