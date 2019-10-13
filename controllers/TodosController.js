@@ -1,13 +1,13 @@
-const Task = require('../models/tasks')
+const Todos = require('../models/todos')
 
 /**
- * Get All Tasks
+ * Get All Todos
  * @param {*} request
  * @param {*} response
  * @param {*} next
  */
 const getAll = (request, response) => {
-  Task.find({}, (error, success) => {
+  Todos.find({}, (error, success) => {
     if (error) {
       response.send(error)
       console.log(error)
@@ -19,13 +19,13 @@ const getAll = (request, response) => {
 module.exports.getAll = getAll
 
 /**
- * Get Single Task
+ * Get Single Todos
  * @param {*} request
  * @param {*} response
  * @param {*} next
  */
 const getSingle = (request, response) => {
-  Task.findById(request.params.id, (error, success) => {
+  Todos.findById(request.params.id, (error, success) => {
     if (error) {
       response.send(error)
       console.log(error)
@@ -37,7 +37,7 @@ const getSingle = (request, response) => {
 module.exports.getSingle = getSingle
 
 /**
- * Save Task
+ * Save Todos
  * @param {*} request
  * @param {*} response
  * @param {*} next
@@ -45,11 +45,13 @@ module.exports.getSingle = getSingle
 const create = (request, response) => {
   let data = request.body
 
+  console.log(data)
+
   if (!data.title || !(data.isDone + '')) {
     response.status(400).json({ 'error': 'Bad Data' })
   } else {
-    let task = new Task(data)
-    task.save((error, success) => {
+    let todo = new Todos(data)
+    todo.save((error, success) => {
       if (error) {
         response.send(error)
         console.log(error)
@@ -62,13 +64,13 @@ const create = (request, response) => {
 module.exports.create = create
 
 /**
- * Delete Task
+ * Delete Todos
  * @param {*} request
  * @param {*} response
  * @param {*} next
  */
 const remove = (request, response) => {
-  Task.findByIdAndRemove(request.params.id, (error, success) => {
+  Todos.findByIdAndRemove(request.params.id, (error, success) => {
     if (error) {
       response.send(error)
       console.log(error)
@@ -80,7 +82,7 @@ const remove = (request, response) => {
 module.exports.remove = remove
 
 /**
- * Update Task
+ * Update Todos
  * @param {*} request
  * @param {*} response
  * @param {*} next
@@ -91,7 +93,7 @@ const update = (request, response) => {
   if (!data) {
     response.status(400).json({ 'error': 'Bad Data' })
   } else {
-    Task.findByIdAndUpdate(request.params.id, data, (error, success) => {
+    Todos.findByIdAndUpdate(request.params.id, data, (error, success) => {
       if (error) {
         response.send(error)
         console.log(error)

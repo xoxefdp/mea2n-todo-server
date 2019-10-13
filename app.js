@@ -16,21 +16,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 /**
- * VIEW Engine
- */
-// app.set('views', path.join(__dirname, 'views'))
-// app.set('view engine', 'ejs')
-// app.engine('html', require('ejs').renderFile)
-
-/**
- * STATIC FILES folder
- */
-// app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
-
-/**
  * DATABASE
  */
-const models = require('./models/models')
+const db = require('./models/models')
+console.log('MongoDB settings: ', db)
 
 /**
  * CORS: This is CORS-enabled for all origins!
@@ -94,7 +83,8 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500)
-  res.render('error')
+  res.locals.message = err.message
+  // res.render('error')
 })
 
 module.exports = app
