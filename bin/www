@@ -12,7 +12,7 @@ const http = require('http')
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(CONFIG.port)
+const port = normalizePort(CONFIG.SERVER_PORT)
 app.set('port', port)
 
 /**
@@ -82,5 +82,5 @@ function onListening () {
     : 'port ' + addr.port
   debug('Listening on ' + bind)
 
-  console.log('Server listening on port:', addr.port)
+  console.log('Server: ', addr)
 }

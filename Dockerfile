@@ -26,6 +26,7 @@ COPY . /builder
 
 # Install dependecies
 RUN npm install --loglevel silly
+    # \ && cp .env.example .env
 
 
 #################### STAGE APPLICATION #########################

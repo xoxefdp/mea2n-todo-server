@@ -1,6 +1,7 @@
 const CONFIG = require('./config/config') // instantiate configuration variables
 
-console.log('Environment: ', CONFIG.app)
+console.log('Application: ', CONFIG.APP_NAME, CONFIG.APP_VERSION)
+console.log('Environment: ', CONFIG.ENVIRONMENT)
 
 const express = require('express')
 const logger = require('morgan')

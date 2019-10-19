@@ -3,17 +3,21 @@
  */
 require('dotenv').config()
 
-const CONFIG = {}
+const package = require('../package.json');
 
-CONFIG.app = process.env.APP || 'APP'
-CONFIG.port = process.env.PORT || 'PORT'
-CONFIG.db_dialect = process.env.DB_DIALECT || 'DB_DIALECT'
-CONFIG.db_host = process.env.DB_HOST || 'DB_HOST'
-CONFIG.db_port = process.env.DB_PORT || 'DB_PORT'
-CONFIG.db_name = process.env.DB_NAME || 'DB_NAME'
-CONFIG.db_user = process.env.DB_USER || 'DB_USER'
-CONFIG.db_password = process.env.DB_PASSWORD || 'DB_PASSWORD'
-CONFIG.jwt_encryption = process.env.JWT_ENCRYPTION || 'JWT_ENCRYPTION'
-CONFIG.jwt_expiration = process.env.JWT_EXPIRATION || 'JWT_EXPIRATION'
+const CONFIG = {
+  APP_NAME: package.name,
+  APP_VERSION: package.version,
+  ENVIRONMENT: process.env.ENVIRONMENT || 'ENVIRONMENT',
+  SERVER_PORT: process.env.SERVER_PORT || 'SERVER_PORT',
+  DB_DIALECT: process.env.DB_DIALECT || 'DB_DIALECT',
+  DB_HOST: process.env.DB_HOST || 'DB_HOST',
+  DB_PORT: process.env.DB_PORT || 'DB_PORT',
+  DB_NAME: process.env.DB_NAME || 'DB_NAME',
+  DB_USER: process.env.DB_USER || 'DB_USER',
+  DB_PASSWORD: process.env.DB_PASSWORD || 'DB_PASSWORD',
+  JWT_ENCRYPTION: process.env.JWT_ENCRYPTION || 'JWT_ENCRYPTION',
+  JWT_EXPIRATION: process.env.JWT_EXPIRATION || 'JWT_EXPIRATION',
+}
 
 module.exports = CONFIG
